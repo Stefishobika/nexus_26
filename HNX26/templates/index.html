@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HNX26 – Factory safety check</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="stripe" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <span class="brand">HNX26</span>
+        <span class="brand-sub">Factory safety check</span>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h1>Check a factory video for safety problems</h1>
+            <p>
+                Upload a clip from the shop floor. It comes back with every
+                person tracked, missing hard hats flagged, and anyone standing
+                in the machine danger zone marked.
+            </p>
+        </section>
+
+        <section class="work">
+            <label class="dropzone" id="dropzone" for="videoInput">
+                <input type="file" id="videoInput" class="visually-hidden"
+                       accept=".mp4,.avi,.mov,.mkv,video/*">
+                <strong id="dropTitle">Choose a video</strong>
+                <span id="dropHint">or drag it here. MP4, AVI, MOV or MKV, up to 500 MB.</span>
+            </label>
+
+            <div class="actions">
+                <button type="button" id="analyzeButton" disabled>Analyze video</button>
+                <p id="status" role="status" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <section class="result" id="result" hidden>
+            <h2>Analyzed video</h2>
+            <video id="resultVideo" controls playsinline></video>
+
+            <div id="summary" hidden>
+                <h3>Events</h3>
+                <ul id="eventList"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Built with YOLO and ByteTrack.
+    </footer>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

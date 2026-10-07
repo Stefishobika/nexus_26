@@ -1,0 +1,267 @@
+:root {
+    --bg: #e8eaeb;
+    --panel: #ffffff;
+    --ink: #16191c;
+    --muted: #5b6369;
+    --line: #c4cacf;
+    --hivis: #f5c400;
+    --hivis-dark: #d9ae00;
+    --danger: #b3261e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+
+/* Hazard stripe: the one loud thing on the page */
+
+.stripe {
+    height: 10px;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--ink) 0 14px,
+        var(--hivis) 14px 28px
+    );
+}
+
+
+/* Layout */
+
+.site-header,
+main,
+footer {
+    width: min(920px, 100% - 40px);
+    margin-inline: auto;
+}
+
+.site-header {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 22px 0 0;
+}
+
+.brand {
+    font-family: "Barlow Condensed", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.02em;
+}
+
+.brand-sub {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+main {
+    flex: 1;
+    padding-bottom: 60px;
+}
+
+
+/* Intro */
+
+.intro {
+    padding: 56px 0 36px;
+}
+
+.intro h1 {
+    font-size: clamp(36px, 6vw, 56px);
+    max-width: 14em;
+    margin-bottom: 16px;
+}
+
+.intro p {
+    max-width: 38em;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+
+/* Upload */
+
+.dropzone {
+    display: block;
+    padding: 36px 28px;
+    background: var(--panel);
+    border: 2px dashed var(--line);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.dropzone strong {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.dropzone span {
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.dropzone:hover,
+.dropzone.dragging {
+    border-color: var(--ink);
+}
+
+.dropzone:focus-within {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+}
+
+.dropzone.has-file {
+    border-style: solid;
+    border-color: var(--ink);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 18px;
+    flex-wrap: wrap;
+}
+
+button {
+    font: inherit;
+    font-weight: 600;
+    padding: 12px 26px;
+    color: var(--ink);
+    background: var(--hivis);
+    border: 2px solid var(--ink);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    background: var(--hivis-dark);
+}
+
+button:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 3px;
+}
+
+button:disabled {
+    color: var(--muted);
+    background: transparent;
+    border-color: var(--line);
+    cursor: not-allowed;
+}
+
+#status {
+    font-size: 15px;
+    color: var(--muted);
+}
+
+#status.error {
+    color: var(--danger);
+    font-weight: 500;
+}
+
+
+/* Result */
+
+.result {
+    margin-top: 48px;
+}
+
+.result h2 {
+    font-size: 30px;
+    margin-bottom: 14px;
+}
+
+#resultVideo {
+    display: block;
+    width: 100%;
+    background: #000;
+    border-radius: 3px;
+}
+
+#summary {
+    margin-top: 28px;
+}
+
+#summary h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+#eventList {
+    list-style: none;
+    border-top: 1px solid var(--line);
+}
+
+#eventList li {
+    display: flex;
+    gap: 18px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#eventList time {
+    flex: none;
+    width: 3.5em;
+    font-variant-numeric: tabular-nums;
+    color: var(--muted);
+}
+
+
+footer {
+    padding: 20px 0 28px;
+    color: var(--muted);
+    font-size: 14px;
+    border-top: 1px solid var(--line);
+}
+
+
+@media (max-width: 520px) {
+    body {
+        font-size: 16px;
+    }
+
+    .intro {
+        padding-top: 36px;
+    }
+
+    .dropzone {
+        padding: 26px 18px;
+    }
+
+    button {
+        width: 100%;
+    }
+}
